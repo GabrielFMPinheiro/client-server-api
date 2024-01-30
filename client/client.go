@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 	"time"
@@ -44,16 +45,18 @@ func main() {
 
 	if err != nil {
 		if ctx.Err() == context.DeadlineExceeded {
-			fmt.Println("Timeout while trying to get data from the server")
+			log.Fatal("Timeout while trying to get data from the server")
 		}
-		fmt.Println("Error to get response")
+		log.Fatal("Error to get response")
 	}
-
-	defer res.Body.Close()
 
 	body, err := ioutil.ReadAll(res.Body)
 
-	fmt.Print(string(body))
+	if err != nil {
+		fmt.Println("Error to read body")
+	}
+
+	defer res.Body.Close()
 
 	var exchange exchangedto.ExchangeDTO
 	json.Unmarshal(body, &exchange)
