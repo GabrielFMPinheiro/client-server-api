@@ -10,7 +10,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/GabrielFMPinheiro//client-server-api/client/dto/exchangedto"
+	"github.com/GabrielFMPinheiro/client-server-api/client/dto/exchangedto"
 )
 
 func saveBid(bid string) {
