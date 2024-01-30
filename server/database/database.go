@@ -16,7 +16,7 @@ func InitDatabase() *sql.DB {
 		os.Exit(1)
 	}
 
-	db.Exec("CREATE TABLE IF NOT EXISTS exchange(code TEXT, codein TEXT, name TEXT, high TEXT, low TEXT, var_bid TEXT, pct_change TEXT, bid TEXT, ask TEXT, timestamp TEXT, create_date TEXT)")
+	db.Exec("CREATE TABLE IF NOT EXISTS exchange(id INTEGER PRIMARY KEY AUTOINCREMENT, code TEXT, codein TEXT, name TEXT, high TEXT, low TEXT, var_bid TEXT, pct_change TEXT, bid TEXT, ask TEXT, timestamp TEXT, create_date TEXT)")
 
 	return db
 }
